@@ -22,7 +22,23 @@ public class ExpressaoBO {
        
        try{
         
-           expressoes =  dao.select();
+           expressoes =  dao.consulta();
+        
+        }catch(Exception e){
+            throw new RuntimeException("Erro ao inserir recuperar no banco de dados");
+        }
+
+       return expressoes;        
+    }
+        public List<Expressao> select(String str){
+
+       TradutorDAO dao = new TradutorDAO();
+       
+       List<Expressao> expressoes = new ArrayList<Expressao>();
+       
+       try{
+        
+           expressoes =  dao.select(str);
         
         }catch(Exception e){
             throw new RuntimeException("Erro ao inserir recuperar no banco de dados");

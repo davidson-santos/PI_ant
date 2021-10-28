@@ -112,13 +112,11 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        System.out.print("entrou");
         Cad cad = new Cad();
         cad.setLocationRelativeTo(null);
         cad.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    
     /**
      * @param args the command line arguments
      */
@@ -146,9 +144,7 @@ public class Home extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
-        
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -160,14 +156,14 @@ public class Home extends javax.swing.JFrame {
     }
     
     public void BPesquisa(ActionEvent e){
-        //String msg = jTextField1.getText();
-        mostra();
+        String msgP = jTextField1.getText();
+        Pesquisa(msgP);
         //JOptionPane.showMessageDialog(rootPane, msg);
     }
     
-    public void mostra(){
+    public void Pesquisa(String pesq){
         ExpressaoBO tbo = new ExpressaoBO();
-        for (Expressao exp : tbo.consulta()){
+        for (Expressao exp : tbo.select(pesq)){
            String msg = exp.getExpressao()+" \n\nTradução: "+exp.getTraducao();
            JOptionPane.showMessageDialog(rootPane, msg);
         }
