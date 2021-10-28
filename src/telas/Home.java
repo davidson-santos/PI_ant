@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 public class Home extends javax.swing.JFrame {
 
     public Home() {
+        this.setLocationRelativeTo(null);
         initComponents();
         setTitle("Tradutor EN-PT");
         jButton1.addActionListener(this::BPesquisa);
@@ -30,15 +31,18 @@ public class Home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        setLocation(new java.awt.Point(500, 200));
         setName("Home"); // NOI18N
         java.awt.GridBagLayout layout1 = new java.awt.GridBagLayout();
-        layout1.columnWidths = new int[] {0, 0, 0};
+        layout1.columnWidths = new int[] {0, 0, 0, 0, 0, 0, 0};
         layout1.rowHeights = new int[] {0, 50, 0, 50, 0};
         getContentPane().setLayout(layout1);
 
@@ -75,16 +79,44 @@ public class Home extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         getContentPane().add(jLabel2, gridBagConstraints);
 
-        jMenu1.setText("Ajuda");
+        jMenu1.setText("Cadastro");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Cadastrar nova expressão");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Sobre");
+        jMenu2.setText("Ajuda");
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Sobre");
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        System.out.print("entrou");
+        Cad cad = new Cad();
+        cad.setLocationRelativeTo(null);
+        cad.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     
     /**
@@ -136,7 +168,7 @@ public class Home extends javax.swing.JFrame {
     public void mostra(){
         ExpressaoBO tbo = new ExpressaoBO();
         for (Expressao exp : tbo.consulta()){
-           String msg = exp.getExpressao();
+           String msg = exp.getExpressao()+" \n\nTradução: "+exp.getTraducao();
            JOptionPane.showMessageDialog(rootPane, msg);
         }
     }
@@ -147,7 +179,9 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
