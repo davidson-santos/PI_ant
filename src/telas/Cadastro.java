@@ -113,7 +113,7 @@ public class Cadastro extends javax.swing.JInternalFrame {
         ExpressaoBO ebo = new ExpressaoBO();
         try {
             ebo.incluir(expressao);
-            JOptionPane.showMessageDialog(null, "Disciplina cadastrada com sucesso");
+            JOptionPane.showMessageDialog(null, "Expressão cadastrada com sucesso");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao incluir a mensagem");

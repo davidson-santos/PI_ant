@@ -37,7 +37,7 @@ public class TradutorDAO {
         }
     }
     
-    public List<Expressao> select(){
+    public List<Expressao> consulta(){
        Connection con = ConexaoSQL.getConexao();
        PreparedStatement stmt = null;
        
@@ -49,7 +49,49 @@ public class TradutorDAO {
        
        try{
            
-           stmt = con.prepareStatement("select id, palavra, traducao from palavras");
+           stmt = con.prepareStatement("select id, palavra, traducao from palavras where");
+           rs = stmt.executeQuery();
+           
+           while (rs.next()){
+               Expressao express =  new Expressao();
+              
+               express.setId(rs.getInt("id"));
+               express.setExpressao(rs.getString("palavra"));
+               express.setTraducao(rs.getString("traducao"));
+              
+               
+               expressoes.add(express);
+               
+           }
+           
+           
+       }catch (SQLException s){
+           s.printStackTrace();
+           
+       }
+       
+        finally {
+            ConexaoSQL.fecharConexao(con, stmt);
+
+        }
+       
+      return expressoes;
+   }
+    
+    public List<Expressao> select(String palavra){
+       Connection con = ConexaoSQL.getConexao();
+       PreparedStatement stmt = null;
+       
+       ResultSet rs = null;
+       
+       
+       List<Expressao> expressoes = new ArrayList<Expressao>();
+       
+       
+       try{
+           
+           stmt = con.prepareStatement("select id, palavra, traducao from "
+                   + "palavras where palavra like '%"+palavra+"%'");
            rs = stmt.executeQuery();
            
            while (rs.next()){
