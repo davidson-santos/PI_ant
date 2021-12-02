@@ -37,7 +37,7 @@ public class TradutorDAO {
         }
     }
     
-    public List<Expressao> consulta(){
+    public List<Expressao> consulta()throws SQLException{
        Connection con = ConexaoSQL.getConexao();
        PreparedStatement stmt = null;
        
@@ -67,6 +67,7 @@ public class TradutorDAO {
            
        }catch (SQLException s){
            s.printStackTrace();
+           throw s;
            
        }
        

@@ -25,12 +25,12 @@ public class ExpressaoBO {
            expressoes =  dao.consulta();
         
         }catch(Exception e){
-            throw new RuntimeException("Erro ao inserir recuperar no banco de dados");
+            throw new RuntimeException("Erro ao inserir recuperar no banco de dados"+e.getMessage());
         }
 
        return expressoes;        
     }
-        public List<Expressao> select(String str){
+    public List<Expressao> select(String str){
 
        TradutorDAO dao = new TradutorDAO();
        
@@ -41,7 +41,8 @@ public class ExpressaoBO {
            expressoes =  dao.select(str);
         
         }catch(Exception e){
-            throw new RuntimeException("Erro ao inserir recuperar no banco de dados");
+            throw e;
+            
         }
 
        return expressoes;        
