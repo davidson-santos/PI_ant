@@ -34,7 +34,7 @@ public class ConexaoSQL {
            
             ex.printStackTrace();
 
-            throw new RuntimeException("Erro ao estabelecer uma conexao com o banco");
+            throw new RuntimeException("Erro ao tentar estabelecer uma conexao com o sistema");
         }
     }
 
